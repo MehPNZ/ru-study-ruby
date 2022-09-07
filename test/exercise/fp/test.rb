@@ -8,7 +8,6 @@ class Exercise::FpTest < Minitest::Test
   # Фильмы у которых рейтиг не задан или равен 0 не учитывать в расчете среднего.
   def test_rating
     array = CSV.readlines('./test/fixtures/films.csv', headers: true)
-
     result = Exercise::Fp.rating(array)
     # rubocop:disable Lint/FloatComparison
     assert result == 6.809410385259628
