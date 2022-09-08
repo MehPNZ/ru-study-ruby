@@ -3,7 +3,7 @@ module Exercise
     class << self
       def replace(array)
         max_el = array[0]
-        array.each { |el| max_el = el if (max_el <=> el) == -1 }
+        array.each { |el| max_el = el if max_el < el }
              .map { |el| el.positive? ? max_el : el }
       end
 
@@ -13,11 +13,7 @@ module Exercise
         mid = (left + right) / 2
         return mid if query == array[mid]
 
-        if query > array[mid]
-          search(array, query, mid + 1, right)
-        else
-          search(array, query, left, mid - 1)
-        end
+        query > array[mid] ? search(array, query, mid + 1, right) : search(array, query, left, mid - 1)
       end
     end
   end
